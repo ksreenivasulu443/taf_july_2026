@@ -1,0 +1,22 @@
+source:
+  path: "C:\\Users\\Haritha\\PycharmProjects\\taf_jan_march_2026\\input_files\\customer_source.csv"
+  type: "csv"
+  file_config:
+    schema: "N"
+    header: True
+    sep: ","
+    inferSchema: True
+target:
+  path: "C:\\Users\\Haritha\\PycharmProjects\\taf_jan_march_2026\\input_files\\customer_target.csv"
+  type: "csv"
+  file_config:
+    schema: "N"
+    header: True
+    sep: ","
+    inferSchema: True
+    multiline: NA
+validation:
+  key_columns: ['customer_id']
+  primary_keys: ['customer_id']
+  unique_cols: ['customer_id', 'email']
+  not_null_cols: ['customer_id', 'phone']
