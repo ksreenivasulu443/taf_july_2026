@@ -1,6 +1,7 @@
 import os
 import json
-from pyspark.sql.types import *
+from pyspark.sql.types import StructType,ArrayType
+from pyspark.sql.functions import col, explode_outer
 def read_schema(dir_path):
     schema_path= os.path.join(dir_path, "schema.json")
 
