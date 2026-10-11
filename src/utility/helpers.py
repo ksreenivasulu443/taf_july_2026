@@ -4,9 +4,9 @@ from pyspark.sql.types import StructType,ArrayType
 from pyspark.sql.functions import col, explode_outer
 def read_schema(dir_path):
     schema_path= os.path.join(dir_path, "schema.json")
-
     with open(schema_path) as f:
         schema = StructType.fromJson(json.load(f))
+        print("schema", schema)
     return schema
 
 

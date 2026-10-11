@@ -6,15 +6,16 @@ source_config:
     header: True
     sep: ","
     inferSchema: True
+
 target_config:
-  path: "C:\\Users\\Haritha\\PycharmProjects\\taf_july_2026\\input_files\\customer_target.csv"
-  type: "csv"
+  path: "C:\\Users\\Haritha\\PycharmProjects\\taf_july_2026\\input_files\\Complex.json"
+  type: "Json"
   file_config:
     schema: "N"
-    header: True
-    sep: ","
-    inferSchema: True
-    multiline: NA
+    header: "NA"
+    sep: "NA"
+    inferSchema: "NA"
+    multiline: "Y"
 validation_config:
   key_columns: ['customer_id']
   primary_keys: ['customer_id']
