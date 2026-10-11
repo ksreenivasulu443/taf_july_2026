@@ -38,9 +38,9 @@ def read_data(request, read_config, spark_session):
     config = read_config
     dir_path = request.node.fspath.dirname
 
-    source_config = config.get("source",{})
-    target_config = config.get("target",{})
-    validation_config = config.get("validation",{})
+    source_config = config.get("source_config",{})
+    target_config = config.get("target_config",{})
+    validation_config = config.get("validation_config",{})
 
     if source_config['type'] == 'database':
         #source = read_db()

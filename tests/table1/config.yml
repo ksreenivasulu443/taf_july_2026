@@ -1,12 +1,12 @@
-source:
-  path: "C:\\Users\\Haritha\\PycharmProjects\\\taf_july_2026\\input_files\\customer_source.csv"
-  type: "json"
+source_config:
+  path: "C:\\Users\\Haritha\\PycharmProjects\\taf_july_2026\\input_files\\customer_source.csv"
+  type: "csv"
   file_config:
     schema: "N"
     header: True
     sep: ","
     inferSchema: True
-target:
+target_config:
   path: "C:\\Users\\Haritha\\PycharmProjects\\taf_july_2026\\input_files\\customer_target.csv"
   type: "csv"
   file_config:
@@ -15,7 +15,7 @@ target:
     sep: ","
     inferSchema: True
     multiline: NA
-validation:
+validation_config:
   key_columns: ['customer_id']
   primary_keys: ['customer_id']
   unique_cols: ['customer_id', 'email']
