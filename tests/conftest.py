@@ -1,5 +1,3 @@
-import os
-
 import pytest
 import os
 import yaml
@@ -36,8 +34,6 @@ def spark_session():
 def read_data( read_config, spark_session):
     spark = spark_session
     config,dir_path = read_config
-    dir_path = request.node.fspath.dirname
-
     source_config = config.get("source_config",{})
     target_config = config.get("target_config",{})
     validation_config = config.get("validation_config",{})
