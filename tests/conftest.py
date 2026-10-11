@@ -48,7 +48,7 @@ def read_data(request, read_config, spark_session):
     else:
         source = read_file(spark=spark,
                            file_type = source_config['type'],
-                           file_path = source_config['file_path'],
+                           file_path = source_config['path'],
                            file_config = source_config['file_config'],
                            dir_path = dir_path )
 
@@ -58,7 +58,7 @@ def read_data(request, read_config, spark_session):
     else:
         target = read_file(spark=spark,
                            file_type = target_config['type'],
-                           file_path = target_config['file_path'],
+                           file_path = target_config['path'],
                            file_config = target_config['file_config'],
                            dir_path = dir_path )
 
