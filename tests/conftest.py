@@ -21,7 +21,7 @@ def read_config(request):
     # print(config.get("dummy", 0))
     # print("source config", config["dummy"])
 
-    return config
+    return config,dir_path
 
 @pytest.fixture(scope="session")
 def spark_session():
@@ -33,9 +33,9 @@ def spark_session():
     return spark
 
 @pytest.fixture(scope="module")
-def read_data(request, read_config, spark_session):
+def read_data( read_config, spark_session):
     spark = spark_session
-    config = read_config
+    config,dir_path = read_config
     dir_path = request.node.fspath.dirname
 
     source_config = config.get("source_config",{})

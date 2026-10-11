@@ -2,7 +2,6 @@ def read_file(spark, file_type, file_path, file_config,dir_path):
     file_type =  file_type.lower()
 
     if file_type == "csv":
-        print("file path:", file_path)
         df = spark.read.csv(file_path, header=True, inferSchema=True)
     elif file_type == "parquet":
         df = spark.read.parquet(file_path)
