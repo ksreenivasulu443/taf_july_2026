@@ -1,0 +1,35 @@
+{
+  "fields": [
+    {
+      "metadata": {},
+      "name": "sno",
+      "nullable": true,
+      "type": "long"
+    },
+    {
+      "metadata": {},
+      "name": "full_name",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {},
+      "name": "email",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {},
+      "name": "phoneno",
+      "nullable": true,
+      "type": "string"
+    },
+    {
+      "metadata": {},
+      "name": "batchid",
+      "nullable": true,
+      "type": "integer"
+    }
+  ],
+  "type": "struct"
+}

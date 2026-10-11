@@ -2,7 +2,7 @@ source_config:
   path: "C:\\Users\\Haritha\\PycharmProjects\\taf_july_2026\\input_files\\customer_source.csv"
   type: "csv"
   file_config:
-    schema: "N"
+    schema: "Y"
     header: True
     sep: ","
     inferSchema: True
