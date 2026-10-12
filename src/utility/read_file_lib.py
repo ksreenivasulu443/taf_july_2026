@@ -23,7 +23,7 @@ def read_file(spark, file_type, file_path, file_config,dir_path):
             df = flatten(df)
     elif file_type == "arvo":
         df = spark.read.format('avro').load(file_path)
-    elif file_type == "txt":
+    elif file_type == "dat":
         df = spark.read.csv(file_path, header=True, inferSchema=True)
     elif file_type == "xml":
         df = spark.read.format('xml').load(file_path)

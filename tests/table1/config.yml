@@ -2,20 +2,20 @@ source_config:
   path: "C:\\Users\\Haritha\\PycharmProjects\\taf_july_2026\\input_files\\customer_source.csv"
   type: "csv"
   file_config:
-    schema: "Y"
+    schema: "N"
     header: True
     sep: ","
     inferSchema: True
 
 target_config:
-  path: "C:\\Users\\Haritha\\PycharmProjects\\taf_july_2026\\input_files\\Complex.json"
-  type: "Json"
+  path: "C:\\Users\\Haritha\\PycharmProjects\\taf_july_2026\\input_files\\userdata1.parquet"
+  type: "parquet"
   file_config:
     schema: "N"
     header: "NA"
     sep: "NA"
     inferSchema: "NA"
-    multiline: "Y"
+    multiline: "NA"
 validation_config:
   key_columns: ['customer_id']
   primary_keys: ['customer_id']
