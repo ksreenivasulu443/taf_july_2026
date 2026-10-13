@@ -3,6 +3,7 @@ import os
 import yaml
 from pyspark.sql import SparkSession
 from src.utility.read_file_lib import read_file
+from src.utility.read_db_lib import read_db
 
 @pytest.fixture(scope="module")
 def read_config(request):
@@ -50,7 +51,9 @@ def read_data( read_config, spark_session):
     validation_config = config.get("validation_config",{})
 
     if source_config['type'] == 'database':
-        #source = read_db()
+        source = read_db(spark=spark,
+                         config=source_config,
+                         dir_path=dir_path)
         pass
     else:
         source = read_file(spark=spark,
@@ -60,7 +63,9 @@ def read_data( read_config, spark_session):
                            dir_path = dir_path )
 
     if target_config['type'] == 'database':
-        #source = read_db()
+        target = read_db(spark=spark,
+                config=target_config,
+                dir_path=dir_path)
         pass
     else:
         target = read_file(spark=spark,
