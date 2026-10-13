@@ -9,6 +9,12 @@ def read_schema(dir_path):
         print("schema", schema)
     return schema
 
+def read_query(dir_path):
+    query_path = os.path.join(dir_path, 'transformation_query.sql')
+    with open(query_path, 'r') as f:
+        query= f.read()
+    return query
+
 
 def flatten(df):
     # compute Complex Fields (Lists and Structs) in Schema

@@ -9,7 +9,7 @@ source_config:
 
 target_config:
   type: "database"
-  transformation : ["N","NA"]
+  transformation : ["Y","sql"]
   table: "[bronze].[customer_bronze]"
   env: "qa"
   exclude_cols: ['SourceFileName','InsertDate']
