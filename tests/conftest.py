@@ -23,8 +23,19 @@ def read_config(request):
 
 @pytest.fixture(scope="session")
 def spark_session():
+    taf_path = os.path.dirname(
+        os.path.dirname(
+            os.path.abspath(__file__)
+        )
+    )
+
+    sql_server_jar = os.path.join(taf_path, "jars", "mssql-jdbc-13.4.0.jre11.jar")
+
     spark = SparkSession.builder \
         .master("local[1]") \
+        .config("spark.jars", sql_server_jar) \
+        .config("spark.driver.extraClassPath", sql_server_jar) \
+        .config("spark.executor.extraClassPath", sql_server_jar) \
         .appName("etl automation framework") \
         .getOrCreate()
 
