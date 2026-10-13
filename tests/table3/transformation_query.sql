@@ -1,4 +1,4 @@
-SELECT  customer_id,
+SELECT  customer_id AS SNO,
         name,
         email,
         phone
