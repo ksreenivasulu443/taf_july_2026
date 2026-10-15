@@ -1,16 +1,20 @@
 source_config:
-  type: "database"
-  transformation : ["Y","sql"]
-  table: "[bronze].[customer_bronze]"
-  env: "qa"
-  exclude_cols: ['SourceFileName','InsertDate']
+  path: "C:\\Users\\Haritha\\PycharmProjects\\taf_july_2026\\input_files\\customer_source.csv"
+  type: "csv"
+  file_config:
+    schema: "N"
+    header: True
+    sep: ","
+    inferSchema: True
 
 target_config:
-  type: "database"
-  transformation : ["Y","sql"]
-  table: "[bronze].[customer_bronze]"
-  env: "qa"
-  exclude_cols: ['SourceFileName','InsertDate']
+  path: "C:\\Users\\Haritha\\PycharmProjects\\taf_july_2026\\input_files\\customer_target.csv"
+  type: "csv"
+  file_config:
+    schema: "N"
+    header: True
+    sep: ","
+    inferSchema: True
 
 validation_config:
   key_columns: ['customer_id']
