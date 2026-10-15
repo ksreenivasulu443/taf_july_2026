@@ -4,7 +4,10 @@ import yaml
 from pyspark.sql import SparkSession
 from src.utility.read_file_lib import read_file
 from src.utility.read_db_lib import read_db
-
+from src.utility.report_lib import (
+    generate_summary,
+    generate_html_report
+)
 @pytest.fixture(scope="module")
 def read_config(request):
     dir_path = request.node.fspath.dirname
@@ -77,8 +80,47 @@ def read_data( read_config, spark_session):
 
 
     return source, target
+TEST_STATS = {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0
+}
+
+def pytest_sessionfinish(
+        session,
+        exitstatus
+):
 
 
+        generate_summary(
+            TEST_STATS
+        )
+
+        generate_html_report(
+            TEST_STATS
+        )
+
+def pytest_runtest_logreport(report):
+
+    # Only count actual test execution.
+    # Do not count setup and teardown.
+    if report.when != "call":
+        return
+
+    TEST_STATS["total"] += 1
+
+    if report.passed:
+
+        TEST_STATS["passed"] += 1
+
+    elif report.failed:
+
+        TEST_STATS["failed"] += 1
+
+    elif report.skipped:
+
+        TEST_STATS["skipped"] += 1
 
 
 

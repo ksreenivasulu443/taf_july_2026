@@ -1,0 +1,2 @@
+run_id,timestamp,validation,status,duration_seconds,details
+20261015_070717,2026-10-15 07:07:31,Count Check,PASS,1.295,"Source=2, Target=2, Difference=0"
