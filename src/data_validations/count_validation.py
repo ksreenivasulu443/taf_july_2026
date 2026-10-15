@@ -9,7 +9,7 @@ def count_check(source, target):
     difference = abs(src_cnt - tgt_cnt)
 
     if difference == 0:
-        status = True
+        status = "PASS"
 
         details ={
             f"Source={src_cnt}, "
@@ -17,7 +17,7 @@ def count_check(source, target):
             f"Difference=0"
         }
     else:
-        status = False
+        status = "FAIL"
 
         details ={
             f"Source={src_cnt}, "

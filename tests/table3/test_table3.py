@@ -5,7 +5,7 @@ def test_count(read_data):
     source, target = read_data
     status = count_check(source, target)
 
-    assert status
+    assert status =='PASS'
 
 # def test_duplicate(read_data):
 #     source, target = read_data

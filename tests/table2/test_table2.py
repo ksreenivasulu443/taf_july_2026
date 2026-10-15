@@ -1,2 +1,8 @@
-# def test_sample(read_config):
-#     assert True
+
+from src.data_validations.count_validation import count_check
+
+def test_count(read_data):
+    source, target = read_data
+    status = count_check(source, target)
+
+    assert status =='PASS'
