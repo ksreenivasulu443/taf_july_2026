@@ -1,5 +1,6 @@
 
 import time
+from src.utility.report_lib import write_output
 
 def count_check(source, target):
     start_time = time.perf_counter()
@@ -9,16 +10,32 @@ def count_check(source, target):
 
     if difference == 0:
         status = True
-        print(f"Source count is {src_cnt} and target count is {tgt_cnt} and difference is {difference}")
+
+        details ={
+            f"Source={src_cnt}, "
+            f"Target={tgt_cnt}, "
+            f"Difference=0"
+        }
     else:
         status = False
-        print(f"Source count is {src_cnt} and target count is {tgt_cnt} and difference is {difference}")
 
+        details ={
+            f"Source={src_cnt}, "
+            f"Target={tgt_cnt}, "
+            f"Difference={difference}"
+        }
     duration = round(
         time.perf_counter() - start_time,
         3
     )
 
     print("count func duration: ", duration)
+
+    write_output(
+        validation_type="Count Check",
+        status=status,
+        duration_seconds=duration,
+        details=details
+    )
 
     return status
