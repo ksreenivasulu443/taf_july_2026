@@ -1,0 +1,4 @@
+run_id,timestamp,validation,status,duration_seconds,details
+20261017_084953,2026-10-17 08:50:07,Count Check,FAIL,1.074,"{'Source=5, Target=4, Difference=1'}"
+20261017_084953,2026-10-17 08:50:10,records only in source,FAIL,2.144,"{'sample_missing_primary_key=[Row(customer_id=105)]', 'Source=5, Target=4, missing_count=1'}"
+20261017_084953,2026-10-17 08:50:11,records only in source,FAIL,1.65,"{'sample_missing_primary_key=[Row(customer_id=105)]', 'Source=5, Target=4, missing_count=1'}"

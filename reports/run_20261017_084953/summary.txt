@@ -1,0 +1,23 @@
+======================================================================
+ETL AUTOMATION EXECUTION SUMMARY
+======================================================================
+
+Run ID                 : 20261017_084953
+
+PYTEST EXECUTION
+----------------------------------------------------------------------
+Total Tests            : 3
+Passed Tests           : 2
+Failed Tests           : 1
+Skipped Tests          : 0
+
+VALIDATION EXECUTION
+----------------------------------------------------------------------
+Total Validations      : 3
+Passed Validations     : 0
+Failed Validations     : 3
+Pass Percentage        : 0.0%
+
+Overall Status         : FAILED
+
+======================================================================
