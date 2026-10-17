@@ -21,3 +21,4 @@ validation_config:
   primary_keys: ['customer_id']
   unique_cols: ['customer_id', 'email']
   not_null_cols: ['customer_id', 'phone']
+  num_records : 10

@@ -104,7 +104,7 @@ def pytest_runtest_logreport(report):
 
     # Only count actual test execution.
     # Do not count setup and teardown.
-    if report.when != "call":
+    if report.when != "call": # report.when 'setup', 'tear_down', 'call'
         return
 
     TEST_STATS["total"] += 1
