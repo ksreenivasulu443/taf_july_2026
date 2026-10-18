@@ -1,5 +1,0 @@
-run_id,timestamp,validation,status,duration_seconds,details
-20261017_091326,2026-10-17 09:13:41,Count Check,PASS,1.264,"{'Source=5, Target=5, Difference=0'}"
-20261017_091326,2026-10-17 09:13:43,records only in source,FAIL,2.386,"{'Source=5, Target=5, missing_count=1', 'sample_missing_primary_key=[Row(customer_id=105)]'}"
-20261017_091326,2026-10-17 09:13:45,records only in target,FAIL,1.553,"{'sample_missing_primary_key=[Row(customer_id=106)]', 'Source=5, Target=5, missing_count=1'}"
-20261017_091326,2026-10-17 09:13:46,duplicate_check,PASS,1.209,"{'Target=5, duplicate_count=0', 'sample duplicate=No duplicates'}"

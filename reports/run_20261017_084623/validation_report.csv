@@ -1,2 +1,0 @@
-run_id,timestamp,validation,status,duration_seconds,details
-20261017_084623,2026-10-17 08:46:39,Count Check,FAIL,1.125,"{'Source=5, Target=4, Difference=1'}"
