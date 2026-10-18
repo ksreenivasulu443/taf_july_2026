@@ -4,6 +4,20 @@ import time
 from src.utility.report_lib import write_output
 
 
+from pyspark.sql import SparkSession
+
+# spark = SparkSession.builder.getOrCreate()
+#
+# source_df = spark.read.csv(r'C:\Users\Haritha\PycharmProjects\taf_july_2026\input_files\customer_source.csv',
+#                            header=True, inferSchema=True)
+#
+# target_df = spark.read.csv(r'C:\Users\Haritha\PycharmProjects\taf_july_2026\input_files\customer_target.csv', header=True)
+#
+# source_df.show()
+# target_df.show()
+#
+# print("source.schema.fields",source_df.schema.fields)
+
 def schema_check(source, target, spark=None):
 
     start_time = time.perf_counter()
@@ -13,14 +27,20 @@ def schema_check(source, target, spark=None):
         for field in source.schema.fields
     }
 
+    print("source_schema",source_schema )
+
     target_schema = {
         field.name.lower(): field.dataType.simpleString()
         for field in target.schema.fields
     }
 
+    print("target_schema", target_schema)
+
     all_columns = sorted(
         set(source_schema.keys()) | set(target_schema.keys())
     )
+
+    print("all columns",all_columns)
 
     failures = []
 
@@ -63,3 +83,5 @@ def schema_check(source, target, spark=None):
     )
 
     return status
+
+

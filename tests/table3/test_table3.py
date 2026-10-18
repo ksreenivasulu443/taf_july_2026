@@ -6,6 +6,7 @@ from src.data_validations.records_only_target import record_only_target
 from src.data_validations.duplicate_validation import duplicate_check
 from src.data_validations.uniqueness_validation import uniqueness_check
 from src.data_validations.not_null_validation import  null_value_check
+from src.data_validations.schema_validation import schema_check
 
 def test_count(read_data):
     source, target = read_data
@@ -58,5 +59,13 @@ def test_not_null_check(read_data, read_config):
     status = null_value_check( df =target,
                                not_null_columns=not_null_cols,
                                failed_records=num_records)
+
+    assert status == 'PASS'
+
+def test_schema_check(read_data, read_config):
+    source, target = read_data
+    config,_ = read_config
+
+    status = schema_check( source, target)
 
     assert status == 'PASS'
