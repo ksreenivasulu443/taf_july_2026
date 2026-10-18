@@ -3,16 +3,17 @@ from src.utility.report_lib import write_output
 
 
 
-# from pyspark.sql import SparkSession
-#
-# spark = SparkSession.builder.getOrCreate()
-#
-# source_df = spark.read.csv('/Users/admin/PycharmProjects/taf_jan_march_2026/input_files/customer_source.csv', header=True)
-#
-# target_df = spark.read.csv('/Users/admin/PycharmProjects/taf_jan_march_2026/input_files/customer_target.csv', header=True)
-#
-# source_df.show()
-# target_df.show()
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.getOrCreate()
+
+source_df = spark.read.csv(r'C:\Users\Haritha\PycharmProjects\taf_july_2026\input_files\customer_source.csv',
+                           header=True, inferSchema=True)
+
+target_df = spark.read.csv(r'C:\Users\Haritha\PycharmProjects\taf_july_2026\input_files\customer_target.csv', header=True)
+
+source_df.show()
+target_df.show()
 
 
 def data_compare(source_df, target_df, key_columns,num_records=10):
@@ -22,19 +23,23 @@ def data_compare(source_df, target_df, key_columns,num_records=10):
     failed = failed.persist()
     failed_count = failed.count()
 
-    # failed_count = failed.collect()
+    failed_count = failed.collect()
     if failed_count > 0:
         failed_records = failed.limit(num_records).collect()  # Get the first 5 failing rows
         failed_preview = [row.asDict() for row in failed_records]
         write_output(
             "data compare Check",
             "FAIL",
+            "0"
             f"Data mismatch data: {failed_preview}"
         )
+
+
     else:
         write_output(
             "data compare Check",
             "PASS",
+            '0'
             f"No mismatches found"
         )
 
@@ -47,15 +52,15 @@ def data_compare(source_df, target_df, key_columns,num_records=10):
             join(failed2, ["hash_key"], how='left_semi').drop('hash_key')
 
         print("after hash filter")
-        source_df.show()
-        target_df.show()
+        source_df.show() #failed rows 101,104
+        target_df.show() # failed 101,104
 
         columnList = source_df.columns# [customer_id,name,email,phone, batchid]
         print("columnList", columnList)
         print("keycolumns", key_columns) #['customer_id']
-        for column in columnList: # column = Phone
-            if column not in key_columns: # email not in ['customer_id'] # True
-                key_columns.append(column) # ['customer_id','email']
+        for column in columnList: # column = email
+            if column not in key_columns: # name not in ['customer_id'] #
+                key_columns.append(column) # ['customer_id','phone']
                 temp_source = source_df.select(key_columns).withColumnRenamed(column, "source_" + column)
 
                 temp_target = target_df.select(key_columns).withColumnRenamed(column, "target_" + column)
@@ -72,9 +77,9 @@ def data_compare(source_df, target_df, key_columns,num_records=10):
         status = 'PASS'
         return status
 
-# data_compare(source_df=source_df, target_df=target_df, key_column=['customer_id'])
-#
-#
+data_compare(source_df=source_df, target_df=target_df, key_columns=['customer_id'])
+
+
 
 
 
