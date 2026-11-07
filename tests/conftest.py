@@ -37,7 +37,7 @@ def spark_session():
 
     hadoop_azure = os.path.join(taf_july,"jars","hadoop-azure-3.3.1.jar")
 
-    sql_server = os.path.join(taf_july,"jars","mssql-jdbc-12.2.0.jre8.jar")
+    sql_server = os.path.join(taf_july,"jars","mssql-jdbc-13.4.0.jre11.jar")
 
     jar_path = ",".join([azure_storage,hadoop_azure,sql_server])
 
@@ -114,7 +114,13 @@ def read_data( read_config, spark_session):
                            file_config = target_config['file_config'],
                            dir_path = dir_path )
 
+    source= source.drop(
+        *source_config.get("exclude_cols", [])
+    )
 
+    target = target.drop(
+        *target_config.get("exclude_cols", [])
+    )
 
     return source, target
 
