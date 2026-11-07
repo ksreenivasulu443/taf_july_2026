@@ -3,22 +3,7 @@ import time
 
 from src.utility.report_lib import write_output
 
-
-from pyspark.sql import SparkSession
-
-# spark = SparkSession.builder.getOrCreate()
-#
-# source_df = spark.read.csv(r'C:\Users\Haritha\PycharmProjects\taf_july_2026\input_files\customer_source.csv',
-#                            header=True, inferSchema=True)
-#
-# target_df = spark.read.csv(r'C:\Users\Haritha\PycharmProjects\taf_july_2026\input_files\customer_target.csv', header=True)
-#
-# source_df.show()
-# target_df.show()
-#
-# print("source.schema.fields",source_df.schema.fields)
-
-def schema_check(source, target, spark=None):
+def schema_check(source, target):
 
     start_time = time.perf_counter()
 

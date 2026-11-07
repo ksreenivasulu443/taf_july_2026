@@ -3,14 +3,7 @@ import time
 def record_only_source(source,target, key_columns,num_records=5):
     start_time = time.perf_counter()
     record_only_source_df = source.select(key_columns).join(target.select(key_columns), on = key_columns, how = 'left_anti')
-    print("records only source")
-    record_only_source_df.show() #105
-
-
     missing_count = record_only_source_df.count()
-
-    print("missing count", missing_count)
-
 
     if missing_count == 0:
         status = 'PASS'

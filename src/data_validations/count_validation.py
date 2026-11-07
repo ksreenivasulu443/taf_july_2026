@@ -38,4 +38,4 @@ def count_check(source, target):
         details=details
     )
 
-    return status
+    return status, src_cnt, tgt_cnt

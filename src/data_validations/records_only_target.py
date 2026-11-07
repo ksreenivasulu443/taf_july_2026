@@ -4,10 +4,6 @@ def record_only_target(source,target, key_columns,num_records=5):
     start_time = time.perf_counter()
     record_only_target_df = target.select(key_columns).join(source.select(key_columns), on = key_columns, how = 'left_anti')
 
-    print("records only in target") # zero
-    record_only_target_df.show()
-
-
     missing_count = record_only_target_df.count()
 
 

@@ -11,9 +11,9 @@ target_config:
   path: "C:\\Users\\Haritha\\PycharmProjects\\taf_july_2026\\input_files\\customer_target.csv"
   type: "csv"
   file_config:
-    schema: "N"
-    header: True
-    sep: ","
+    schema: "TRUE"
+    header: Y
+    sep: "''"
     inferSchema: True
 
 validation_config:

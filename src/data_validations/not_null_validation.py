@@ -8,13 +8,6 @@ from src.utility.report_lib import write_output
 NULL_LIKE_VALUES = ["NA", "NULL", "NONE", "N/A", "UNKNOWN", 'NUL','?']
 
 
-# from pyspark.sql import SparkSession
-#
-# spark = SparkSession.builder.getOrCreate()
-#
-# target_df = spark.read.csv(r'C:\Users\Haritha\PycharmProjects\taf_july_2026\input_files\customer_target.csv', header=True)
-#
-# target_df.show()
 
 def null_value_check(df, not_null_columns, failed_records=5):
 
@@ -32,25 +25,17 @@ def null_value_check(df, not_null_columns, failed_records=5):
             | F.upper(value_as_string).isin(NULL_LIKE_VALUES)
         )
 
-   #      failing_rows = df.filter("""customer_name IS NULL
-   # OR TRIM(CAST(customer_name AS STRING)) = ''
-   # OR UPPER(TRIM(CAST(customer_name AS STRING)))
-   #    IN ('NULL', 'NONE', 'N/A', 'NA')""")
-
         null_count = failing_rows.count()
 
         if null_count > 0:
 
             sample_rows = failing_rows.limit(failed_records).collect()
 
-            #print("sample rows", sample_rows)
-
             failed_preview = [
                 row.asDict(recursive=True)
                 for row in sample_rows
             ]
 
-            #print("failed_preview rows", failed_preview)
 
             failures.append({
                 "column": column,
@@ -75,6 +60,3 @@ def null_value_check(df, not_null_columns, failed_records=5):
     )
 
     return status
-
-
-# null_value_check(df=target_df, not_null_columns=['name','email','phone'])

@@ -3,19 +3,6 @@ from src.utility.report_lib import write_output
 
 
 
-from pyspark.sql import SparkSession
-
-spark = SparkSession.builder.getOrCreate()
-
-source_df = spark.read.csv(r'C:\Users\Haritha\PycharmProjects\taf_july_2026\input_files\customer_source.csv',
-                           header=True, inferSchema=True)
-
-target_df = spark.read.csv(r'C:\Users\Haritha\PycharmProjects\taf_july_2026\input_files\customer_target.csv', header=True)
-
-source_df.show()
-target_df.show()
-
-
 def data_compare(source_df, target_df, key_columns,num_records=10):
     smt = source_df.exceptAll(target_df).withColumn("datafrom", lit("source"))
     tms = target_df.exceptAll(source_df).withColumn("datafrom", lit("target"))
@@ -75,10 +62,6 @@ def data_compare(source_df, target_df, key_columns,num_records=10):
     else:
         status = 'PASS'
         return status
-
-data_compare(source_df=source_df, target_df=target_df, key_columns=['customer_id'])
-
-
 
 
 
