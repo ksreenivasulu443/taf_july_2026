@@ -5,11 +5,12 @@ import sys
 sys.dont_write_bytecode = True
 
 def main():
-    # Customize the arguments for pytest run
+    # Customize the arguments for pytest run #1222
     pytest_args = [
         "tests/table4",
         "-v",
         "-s"
+
     ]
 
     # Exit with pytest's exit code
