@@ -1,0 +1,18 @@
+source_config:
+  type: "database"
+  transformation : ["Y","SQL"]
+  table: "[bronze].[CustomerLanding]"
+  env: "qa"
+  exclude_cols: ['HashKey','SourceFileName','InsertDate','rn']
+
+target_config:
+  type: "database"
+  transformation : ["N","NA"]
+  table: "[bronze].[Customer_Clean]"
+  env: "qa"
+  exclude_cols: ['HashKey','SourceFileName','InsertDate','rn']
+validation_config:
+  key_columns: ['customer_id']
+  primary_keys: ['customer_id']
+  unique_cols: ['customer_id', 'email']
+  not_null_cols: ['customer_id', 'phone']
